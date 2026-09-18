@@ -37,3 +37,8 @@ float get_specialty_fee(int id) {
     if (id >=1 && id<=4) return specialty_fee[id-1];
     return 0.0;
 }
+
+int get_specialty_time(int id) {
+    if (id>=1 && id<=4) return specialty_times[id-1];
+    return 0;
+}
