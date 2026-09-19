@@ -152,7 +152,20 @@ void generate_reports(Patient patients[], int count) {
     printf("======================================================\n");
 }
 
+void save_to_file(Patient patients[], int count) {
+    FILE *fp = fopen("patient records.txt", "w");
+    if (fp == NULL) {
+        printf("Error saving records to file!\n");
+        return;
+    }
 
+    fprintf(fp, "=== PATIENT BILLING LOGS ===\n");
+    for (int i=0 ; i < count ; i++) {
+        fprintf(fp, "ID: PAT-%d | Name: %s | Age: %d | Level: %d | Specialty: %d\n", patients[i].id, patients[i].name, patients[i].age, patients[i].emergency_level, patients[i].specialty_id);
+    }
+    fclose(fp);
+    printf("\n[+] Patient records successfully saved to 'patient records.txt'!\n");
+}
 
 
 
