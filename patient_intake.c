@@ -14,7 +14,31 @@ void register_patiene(Patient patients[], int index) {
     patients[index].name[strcspn(patients[index].name, "\n")] = 0;
 
     printf("Enter Age: ");
+    scanf("%d", &patients[index].age);
+
+    printf("Enter Emergency Status (1: Normal, 2: Urgent, 3: Critical): ");
     scanf("%d", &patients[index].emergency_level);
 
+    int valid_selection = 0;
+    while (!valid_selection) {
+        display_specialties();
+        printf("Select Specialty ID (1-4): ");
+        scanf("%d", patients[index].specialty_id);
+
+        int spec_id = patients[index].specialty_id;
+        int max_cap = get_specialty_cap(spec_id);
+
+        if (spec_id >= 1 && spec_id <=4) {
+            if (specialty_queue_count[spec_id] >= max_cap) {
+                printf("\n[!] Sorry! Daily Patient Cap (%d) reached for this Specialty. Please select another specialty.\n", max_cap);
+            }
+            else {
+                    printf("\n[!] Invalid Specialty ID! Please select between 1 and 4.\n");
+            }
+        }
+    }
+
+    printf("Is Addmitted to Ward? (1: Yes, 0: No): ");
+    scanf("%d", &patients[index].is_addmitted);
 
 }
