@@ -5,7 +5,7 @@
 
 int specialty_queue_count[5] = {0};
 
-void register_patiene(Patient patients[], int index) {
+void register_patient(Patient patients[], int index) {
     patients[index].id = 1001 + index;
 
     printf("\n--- Registering Patient #%d ---\n", index + 1);
@@ -41,4 +41,17 @@ void register_patiene(Patient patients[], int index) {
     printf("Is Addmitted to Ward? (1: Yes, 0: No): ");
     scanf("%d", &patients[index].is_addmitted);
 
+    if (patients[index].is_addmitted == 1) {
+        display_wards();
+        printf("Select Ward ID (1-4): ");
+        scanf("%d", &patients[index].ward_id);
+
+        printf("Enter Expected Days of Stay: ");
+        scanf("%d", &patients[index].stay_days);
+    }
+    else {
+        patients[index].ward_id = 0;
+        patients[index].stay_days = 0;
+    }
+    getchar();
 }
