@@ -55,3 +55,42 @@ void register_patient(Patient patients[], int index) {
     }
     getchar();
 }
+
+void sort_patients(Patient patients[], int count) {
+    for (int i=0 ; i<count-1 ; i++) {
+        for (int j =0 ; j<count-i-1 ; j++) {
+            if (patients[j].emergency_level < patients[j+1].emergency_level) {
+                Patient temp = patients[j];
+                patients[j] = patients[j+1];
+                patients[j+1] = temp;
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
