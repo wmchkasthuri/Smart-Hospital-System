@@ -1,0 +1,39 @@
+# depslib dependency file v1.0
+1789583594 source:c:\users\user\desktop\smart hospital & resource allocation system\assignment\hospital_data.c
+	<stdio.h>
+	"hospital_data.h"
+
+1789069706 c:\users\user\desktop\smart hospital & resource allocation system\assignment\hospital_data.h
+
+1789583375 source:c:\users\user\desktop\smart hospital & resource allocation system\assignment\main.c
+	<stdio.h>
+	"hospital_data.h"
+	"patient_intake.h"
+
+1789583589 c:\users\user\desktop\smart hospital & resource allocation system\assignment\patient_intake.h
+
+1789583579 source:c:\users\user\desktop\smart hospital & resource allocation system\assignment\patient_intake.c
+	<stdio.h>
+	<string.h>
+	"patient_intake.h"
+	"hospital_data.h"
+
+1789583594 source:c:\users\user\desktop\as20250414-assignment\smart hospital & resource allocation system\assignment\hospital_data.c
+	<stdio.h>
+	"hospital_data.h"
+
+1789069706 c:\users\user\desktop\as20250414-assignment\smart hospital & resource allocation system\assignment\hospital_data.h
+
+1789583375 source:c:\users\user\desktop\as20250414-assignment\smart hospital & resource allocation system\assignment\main.c
+	<stdio.h>
+	"hospital_data.h"
+	"patient_intake.h"
+
+1789583589 c:\users\user\desktop\as20250414-assignment\smart hospital & resource allocation system\assignment\patient_intake.h
+
+1789583579 source:c:\users\user\desktop\as20250414-assignment\smart hospital & resource allocation system\assignment\patient_intake.c
+	<stdio.h>
+	<string.h>
+	"patient_intake.h"
+	"hospital_data.h"
+

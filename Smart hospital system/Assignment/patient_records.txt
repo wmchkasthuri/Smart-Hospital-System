@@ -1,0 +1,4 @@
+=== PATIENT BILLING LOGS ===
+ID: PAT-1002 | Name: kasun perera | Age: 4 | Level: 3 | Specialty: 3
+ID: PAT-1003 | Name: nimal fernando | Age: 70 | Level: 2 | Specialty: 2
+ID: PAT-1001 | Name: saman silva | Age: 30 | Level: 1 | Specialty: 1
