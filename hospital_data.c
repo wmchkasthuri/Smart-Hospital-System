@@ -42,3 +42,17 @@ int get_specialty_time(int id) {
     if (id>=1 && id<=4) return specialty_times[id-1];
     return 0;
 }
+
+int get_specialty_cap(int id) {
+    if (id>=1 && id<=4) return specialty_caps[id-1];
+    return 0;
+}
+
+float get_ward_rate(int id) {
+    if (id>=1 && id<=4) return ward_rates[id-1];
+    return 0.0;
+}
+
+
+
+
