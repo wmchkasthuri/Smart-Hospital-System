@@ -35,6 +35,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="../hospital_data.h" />
+		<Unit filename="../patient_intake.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="../patient_intake.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
