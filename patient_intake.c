@@ -110,7 +110,47 @@ void display_patient(Patient p) {
     printf("======================================================\n");
 }
 
+void generate_reports(Patient patients[], int count) {
+    int lvl1 = 0, lvl2 = 0, lvl3 = 0;
+    float total_revenue = 0.0, total_discounts = 0.0;
+    float max_bill = -1.0;
+    char highest_payer[50] = "";
 
+    for (int i = 0 ; i < count ; i++) {
+        if (patients[i].emergency_level == 1) lvl1++;
+        else if (patients[i].emergency_level == 2) lvl2++;
+        else if (patients[i].emergency_level == 3) lvl3++;
+
+        float doc_fee = get_specialty_fee(patients[i].specialty_id);
+        float surge_rate = (patients[i].emergency_level == 2) ? 0.20 : (patients[i].emergency_level ==3) ? 0.05 : 0.0;
+        float gross = doc_fee + (doc_fee * surge_rate) + ((patients[i].is_addmitted == 1) ? get_ward_rate(patients[i].ward_id) * patients[i].stay_days : 0.0);
+        float disc = (patients[i].age < 5 || patients[i].age > 65) ? gross * 0.15 : 0.0;
+        float final_payable = gross - disc;
+
+        total_revenue += final_payable;
+        total_discounts += disc;
+
+        if (final_payable > max_bill) {
+            max_bill = final_payable;
+            strcpy(highest_payer, patients[i].name);
+        }
+
+    }
+
+    printf("\n====================================================\n");
+    printf("            PERFORMANCE REPORTS & ANALYTICS           \n");
+    printf("======================================================\n");
+    printf("Total Patients Registered : %d\n", count);
+    printf("  - Level 1 (Normal)      : %d\n", lvl1);
+    printf("  - Level 2 (Urgent)      : %d\n", lvl2);
+    printf("  - Level 3 (Critical)    : %d\n", lvl3);
+    printf("------------------------------------------------------\n");
+    printf("Total Revenue Earned      : LKR %.2f\n", total_revenue);
+    printf("Total Discounts Granted   : LKR %.2f\n", total_discounts);
+    printf("------------------------------------------------------\n");
+    printf("Highest Paying Patient    : %s (LKR %.2f)\n",highest_payer, max_bill);
+    printf("======================================================\n");
+}
 
 
 
