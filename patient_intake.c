@@ -68,7 +68,47 @@ void sort_patients(Patient patients[], int count) {
     }
 }
 
+void display_patient(Patient p) {
+    float doc_fee = get_specialty_fee(p.specialty_id);
+    int avg_time = get_specialty_time(p.specialty_id);
 
+    float surge_rate = 0.0;
+    if (p.emergency_level == 2) surge_rate = 0.20;
+    else if (p.emergency_level == 3) surge_rate = 0.05;
+
+    float surge_charge = doc_fee * surge_rate;
+    float ward_cost = (p.is_addmitted == 1) ? get_ward_rate(p.ward_id) * p.stay_days : 0.0;
+    float gross_total = doc_fee + surge_charge + ward_cost;
+
+    float discount = 0.0;
+    if (p.age < 5 || p.age > 65) {
+        discount=gross_total*0.15;
+    }
+
+    float final_amount = gross_total-discount;
+    float wait_time = (p.emergency_level == 3) ? 0.0 : (specialty_queue_count[p.specialty_id]-1)*avg_time;
+
+    printf("\n====================================================\n");
+    printf("         SMART HOSPITAL ADMISSION & BILL              \n");
+    printf("------------------------------------------------------\n");
+    printf("Patient Id     : PAT-%d\n", p.id);
+    printf("Patient Name   : %s\n", p.name);
+    printf("Age            : %d Years %s\n", p.age, (discount > 0) ? "(15% Subsidy Eligible" : "");
+    printf("Specialty ID   : %d\n", p.specialty_id);
+    printf("Assigned Ward  : %s\n", (p.is_addmitted == 1) ? "Ward Addmitted" : "OPD / Outpatient");
+    printf("Urgency Level  : Level %d (%s)\n", p.emergency_level, (p.emergency_level == 3) ? "Critical" : (p.emergency_level == 2) ? "Urgent" : "Normal");
+    printf("------------------------------------------------------\n");
+    printf("Base Consultation Fee : LKR %.2f\n", doc_fee);
+    printf("Emergency Surcharge   : LKR %.2f (%.0f%%)\n", surge_charge, surge_rate * 100);
+    printf("Ward Stay Cost (%d Days) : LKR %.2f\n", p.stay_days, ward_cost);
+    printf("------------------------------------------------------\n");
+    printf("Gross Total Bill      : LKR %.2f\n", gross_total);
+    printf("Age Subsidy Discount  : -LKR %.2f (15%%)\n", discount);
+    printf("------------------------------------------------------\n");
+    printf("Final Payable Amount  : LKR %.2f\n", final_amount);
+    printf("Estimated Waiting Time: %.2f mins %s\n", wait_time, (p.emergency_level == 3) ? "(Immediate Attention)" : "");
+    printf("======================================================\n");
+}
 
 
 
